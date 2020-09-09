@@ -1,7 +1,7 @@
+document.body.onload = addBonusLife;
 const monsterHealthBar = document.getElementById('monster-health');
 const playerHealthBar = document.getElementById('player-health');
 const bonusLifeEl = document.getElementById('bonus-life');
-// const addLife = document.getElementById('')
 
 const attackBtn = document.getElementById('attack-btn');
 const strongAttackBtn = document.getElementById('strong-attack-btn');
@@ -34,17 +34,28 @@ function increasePlayerHealth(healValue) {
 function resetGame(value) {
   playerHealthBar.value = value;
   monsterHealthBar.value = value;
+  addBonusLife();
 }
 
 function removeBonusLife() {
   bonusLifeEl.parentNode.removeChild(bonusLifeEl);
 }
 
-// function addBonusLife() {
-//   if (bonusLifeEl == null) {
-//     bonusLifeEl.parentNode.appendChild(bonusLifeEl);
-//   }
-// }
+// ADD THE BONUS BACK DURING GAME RESET?
+function addBonusLife(obj) {
+  if (bonusLifeEl == null) {
+    const obj = document.getElementById("obj");
+    const newSpan = document.createElement("span");
+    newSpan.setAttribute("id", "player-bonus");
+    newSpan.innerHTML ="1";
+
+    // const spanText = document.createTextNode("1");
+    // newSpan.id = "bonus-life"
+    // newSpan.innerHTML ="1";         // Create a text node
+    newSpan.appendChild(newSpan);
+    // document.getElementById("player-bonus").appendChild(newSpan);     // Append <li> to <ul> with id="myList"
+  }                
+}
 
 function setPlayerHealth(health) {
   playerHealthBar.value = health;
