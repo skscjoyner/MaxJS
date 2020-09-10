@@ -232,25 +232,54 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
+	// FOR LOOP
 	for (let i = 0; i < 3; i++) {
 		console.log('--------------');
 	}
-	// for (let i = 10; i > 0;) {
-	// if 'i' is inside the loop statement = '10 -1'
 	// for (let i = 10; i > 0; i++) {
-	// 	i--;
+	// if 'i' is inside the loop statement = '10 - 1'
+	// for (let i = 10; i > 0;) {
+	// 	i--; // decrement done outside of the loop.
 	// 	console.log(i); // '9 - 0'
 	// }
 	// for (let i = 0; i < battleLog.length; i++) { // gives access to the index
 	// 	console.log(battleLog[i]);
 	// }
 	// console.log(battleLog);
+// }
+
+	// // FOR-OF LOOP
+	// let i = 0;
+	// for (const /* not changed, but NEW 'const' for every loop iteration */ logEntry /* constant name describes what's in the array */ of battleLog /* array you want to loop thrught */) { // no access to index unless managed manually. ONLY FOR ARRAYS
+	// 	console.log(i); // managing the index manually
+	// 	console.log(logEntry);
+	// 	i++;
+	// }
+
+	// FOR-IN LOOP INSIDE THE FOR-OF LOOP
 	let i = 0;
-	for (const logEntry of battleLog) { // no access to index unless managed manually
-		console.log(i); // managing the index manually
-		console.log(logEntry);
+	for (const logEntry of battleLog) { // no access to index unless managed manually. ONLY FOR ARRAYS
+		console.log(`#${i}`);
+		for (const key in logEntry) { // ONLY FOR OBJECTS
+			console.log(`${key} => ${logEntry[key]}`);
+		}
 		i++;
 	}
+
+	// WHILE LOOP - FIRST LOOK
+	let j = 0;
+	while (j < 3) {
+		console.log('yyy'); // condition checked before loop is run and will not show '3'
+		j++ // MUST ALWAYS ADD INCREMENT OR WILL GET INFINITE LOOP
+	}
+
+	// DO-WHILE LOOP
+	let k = 0;
+	do {
+		console.log(k);
+		k++;
+	} while (k < 3);  //condition checked after loop is run and will show '3'
+	// console.log(battleLog);
 }
 
 attackBtn.addEventListener("click", attackHandler);
