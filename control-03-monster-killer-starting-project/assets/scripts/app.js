@@ -35,12 +35,12 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
     finalMonsterHealth: monsterHealth,
     finalPlayerHealth: playerHealth,
 	};
-	
+	// SWITCH CASE INSTEAD OF IF/ELSE
 	switch (ev){
 		case LOG_EVENT_PLAYER_ATTACK:
 			logEntry.target = "MONSTER";
 			break;
-			// Spell out the logEntry
+		// Spelled out the logEntry in long form => only need to add TARGET
 		case LOG_EVENT_PLAYER_STRONG_ATTACK:
 			logEntry = {
 				event: ev,
@@ -78,7 +78,8 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			break;
 		default:
 			logEntry = {}
-	}
+  }
+  //  // IF/ELSE STATEMENT
   // if (event === LOG_EVENT_PLAYER_ATTACK) {
   //   // lines 30 - 39 are shorter and more dynamic NO NEED TO ADD LogEntry array since created above.
   //   logEntry.target = "MONSTER"; // adds the 'target' value to the object.
@@ -256,7 +257,7 @@ function printLogHandler() {
 	// 	i++;
 	// }
 
-	// FOR-IN LOOP INSIDE THE FOR-OF LOOP
+	// FOR-IN LOOP INSIDE THE FOR-OF LOOP - Can stand alone
 	let i = 0;
 	for (const logEntry of battleLog) { // no access to index unless managed manually. ONLY FOR ARRAYS
 		console.log(`#${i}`);
