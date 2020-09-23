@@ -16,6 +16,7 @@ const enteredValue = prompt("Maximum life for you and the monster", "100");
 
 let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
+let lastLoggedEntry;
 
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
   chosenMaxLife = 100;
@@ -232,6 +233,11 @@ function healPlayerHandler() {
   endRound();
 }
 
+// //  ORIGINAL printLogHandler function
+// function printLogHandler() {
+//   console.log(battleLog);
+// }
+
 function printLogHandler() {
 	// FOR LOOP
 	for (let i = 0; i < 3; i++) {
@@ -258,30 +264,44 @@ function printLogHandler() {
 	// }
 
 	// FOR-IN LOOP INSIDE THE FOR-OF LOOP - Can stand alone
-	let i = 0;
-	for (const logEntry of battleLog) { // no access to index unless managed manually. ONLY FOR ARRAYS
-		console.log(`#${i}`);
-		for (const key in logEntry) { // ONLY FOR OBJECTS
-			console.log(`${key} => ${logEntry[key]}`);
+	let i = 0; // Needed to access the index if using FOR-OF loop
+  for (const logEntry of battleLog) { // no access to index unless managed manually. ONLY FOR ARRAYS
+    // This covers the 'break' portion of loops. It stops the loop from continuing.
+    if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+      console.log(`#${i}`);
+      for (const key in logEntry) { // ONLY FOR OBJECTS
+        console.log(`${key} => ${logEntry[key]}`);
+      }
+      lastLoggedEntry = i;
+      // BREAK - stops the loop from continuing
+      break;
 		}
 		i++;
 	}
 
-	// WHILE LOOP - FIRST LOOK
-	let j = 0;
-	while (j < 3) {
-		console.log('yyy'); // condition checked before loop is run and will not show '3'
-		j++ // MUST ALWAYS ADD INCREMENT OR WILL GET INFINITE LOOP
-	}
+	// // WHILE LOOP - FIRST LOOK
+	// let j = 0;
+	// while (j < 3) {
+	// 	console.log('yyy'); // condition checked before loop is run and will not show '3'
+	// 	j++ // MUST ALWAYS ADD INCREMENT OR WILL GET INFINITE LOOP
+	// }
 
-	// DO-WHILE LOOP
-	let k = 0;
-	do {
-		console.log(k);
-		k++;
-	} while (k < 3);  //condition checked after loop is run and will show '3'
-	// console.log(battleLog);
+	// // DO-WHILE LOOP
+	// let k = 0;
+	// do {
+	// 	console.log(k);
+	// 	k++;
+	// } while (k < 3); // condition checked after loop is run and will show '3'
+	// // console.log(battleLog);
 }
+
+// // CONTINUE INSIDE LOOP - will yield 0,1,2,4. 3 will be skipped.
+// for (let i = 0; i < 5; i++) {
+//   if (i === 3) {
+//     continue;
+//   }
+//   console.log(i);
+// }
 
 attackBtn.addEventListener("click", attackHandler);
 strongAttackBtn.addEventListener("click", strongAttackHandler);
