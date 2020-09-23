@@ -242,7 +242,22 @@ function printLogHandler() {
 	// FOR LOOP
 	for (let i = 0; i < 3; i++) {
 		console.log('--------------');
-	}
+  }
+  
+  // LABELED STATEMENT IN LOOPS - RARELY USED
+  let j = 0;
+  outerWhile: do {
+    console.log('Outer', j);
+    innerFor: for (let k = 0; k < 5; k++) {
+      if (k === 3) {
+        break outerWhile;
+        // continue outerWhile; dangerous! => INFINITE LOOP because exit condition never reached!!
+      }
+      console.log('Inner', k);
+    }
+    j++;
+  } while (j < 3); // exit condition
+
 	// for (let i = 10; i > 0; i++) {
 	// if 'i' is inside the loop statement = '10 - 1'
 	// for (let i = 10; i > 0;) {
@@ -307,3 +322,4 @@ attackBtn.addEventListener("click", attackHandler);
 strongAttackBtn.addEventListener("click", strongAttackHandler);
 healBtn.addEventListener("click", healPlayerHandler);
 logBtn.addEventListener("click", printLogHandler);
+
