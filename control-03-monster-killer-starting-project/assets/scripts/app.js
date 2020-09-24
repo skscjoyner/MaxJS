@@ -12,14 +12,31 @@ const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
 
-const enteredValue = prompt("Maximum life for you and the monster", "100");
-
-let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
 let lastLoggedEntry;
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+function getMaxLifeValues() {
+  const enteredValue = prompt("Maximum life for you and the monster", "100");
+
+  const parsedValue = parseInt(enteredValue);
+  if (isNaN(parsedValue) || parsedValue <= 0) {
+    throw {message: 'Invalid User input, not a number'};
+  }
+  return parsedValue;
+}
+
+let chosenMaxLife;
+
+// TRY CATCH - Used around code that might fail. NOT THE ENTIRE APPLICATION!!!
+try {
+  chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+  console.log(error);
   chosenMaxLife = 100;
+  alert("You entered an incorrect value. Default of 100 for Max Life was used.");
+  // throw error;
+} finally { // for cleanup. Won't use in many cases.
+  // some code to add or delete or change variables or data.
 }
 
 let currentMonsterHealth = chosenMaxLife;
