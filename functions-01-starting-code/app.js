@@ -174,7 +174,7 @@ startGameBtn.addEventListener('click', () => {
 // Must ALWAYS be last formal parameter in the list.
 // const sumUp = (...numbers) => { // This is the REST OPERATOR. Similar to the spread operator.
 //   let sum = 0;
-//   for (const num of numbers) {
+//   for (const num of numbers) { // for-of loop
 //     sum += num;
 //   }
 //   return sum;
