@@ -169,6 +169,7 @@ startGameBtn.addEventListener('click', () => {
 
 
 // /*/*/* NOT RELATED TO THE GAME *\*\*\
+
 // REST OPERATOR takes all objesct and merges them into the current parameter list inside of the function.
 // Must ALWAYS be last formal parameter in the list.
 // const sumUp = (...numbers) => { // This is the REST OPERATOR. Similar to the spread operator.
