@@ -172,6 +172,7 @@ startGameBtn.addEventListener('click', () => {
 
 // REST OPERATOR takes all objesct and merges them into the current parameter list inside of the function.
 // Must ALWAYS be last formal parameter in the list.
+// Looks like the SPREAD OPERATOR - which is used ONLY when creating objects and arrays.
 // const sumUp = (...numbers) => { // This is the REST OPERATOR. Similar to the spread operator.
 //   let sum = 0;
 //   for (const num of numbers) { // for-of loop
@@ -185,7 +186,7 @@ startGameBtn.addEventListener('click', () => {
 const subtractUp = function() { // ONLY when using the'function' keyword...
   let sum = 0;
   for (const num of arguments) { // ...can use the 'arguments' keyword. *We do not define it.
-    sum -= num;
+    sum -= num; // Do not use anymore because the REST OPERATOR has been introduced.
   }
   return sum;
 }
@@ -214,7 +215,7 @@ const subtractUp = function() { // ONLY when using the'function' keyword...
 // console.log(subtractUp(1, 10, 15, 20));
 
 
-// CALLBACK FUNCTIONS - called for you by something else. 
+// CALLBACK FUNCTIONS - called for you by something else - not called directly by developer. 
 // You cannot execute it manually.
 // Built on our own.
 
