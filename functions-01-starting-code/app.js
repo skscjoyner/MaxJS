@@ -181,15 +181,15 @@ startGameBtn.addEventListener('click', () => {
 //   return sum;
 // };
 
-// Before the rest operator (...variableName), had to use the format below with 'arguments' keyword.
-// No longer preferred or used much, but may still see it. DO NOT USE IT!!! Haha!!
-const subtractUp = function() { // ONLY when using the'function' keyword...
-  let sum = 0;
-  for (const num of arguments) { // ...can use the 'arguments' keyword. *We do not define it.
-    sum -= num; // Do not use anymore because the REST OPERATOR has been introduced.
-  }
-  return sum;
-}
+// // Before the rest operator (...variableName), had to use the format below with 'arguments' keyword.
+// // No longer preferred or used much, but may still see it. DO NOT USE IT!!! Haha!!
+// const subtractUp = function(resultHandler, ...numbers) { // ONLY when using the'function' keyword...
+//   let sum = 0;
+//   for (const num of numbers) { // ...can use the 'arguments' keyword. *We do not define it.
+//     sum -= num; // Do not use anymore because the REST OPERATOR has been introduced.
+//   }
+//   resultHandler(sum);
+// }
 
 // console.log(sumUp(1, 5, 10, -3, 6, 10));
 // console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
@@ -219,22 +219,26 @@ const subtractUp = function() { // ONLY when using the'function' keyword...
 // You cannot execute it manually.
 // Built on our own.
 
-const sumUp = (resultHandler, ...numbers) => { 
+const combine = (resultHandler, operation, ...numbers) => { 
   const validateNumber = (number) => { 
-    return isNaN(number) ? 2 : number;
+    return isNaN(number) ? 0 : number; // add '2' anyplace a non-number is used.
   };
 
   let sum = 0;
   for (const num of numbers) {
-    sum += validateNumber(num);
+    if (operation === 'ADD') {
+      sum += validateNumber(num);
+    } else {
+      sum -= validateNumber(num);
+    }
   }
   resultHandler(sum);
 };
 
-const showResult = (result) => {
-  alert('The result is: ' + result);
+const showResult = (messageText, result) => {
+  alert(messageText + ' ' + result);
 };
 
-sumUp(showResult, 1, 5, 10, -3, 'abcd', 6, 10);
-sumUp(showResult, 1, 5, 10, -3, 6, 10, 25, 88);
-console.log(subtractUp(1, 10, 15, 20));
+combine(showResult.bind(this, 'The result after adding all numbers is: '), 'ADD', 1, 5, 'abcd', -3, 6, 10);
+combine(showResult.bind(this, 'The result after adding all numbers is: '), 'ADD', 1, 5, 10, -3, 6, 10, 25, 88);
+combine(showResult.bind(this, 'The result after subracting all numbers is: '), 'SUBTRACT', 1, 10, 15, 20);
