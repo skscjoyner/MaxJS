@@ -8,7 +8,7 @@ li2.style.backgroundColor = 'black';
 
 // Question 2
 
-// const title = document.querySelector('title');
+const title = document.querySelector('title');
 // title.textContent = 'Assignment - Solved';
 
 const head = document.head;
