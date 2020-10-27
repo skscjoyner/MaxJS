@@ -4,7 +4,7 @@ let logEntries = [];
 
 function getUserNumberInput() {
 	return parseInt(userInput.value);
-	// can use '+userInput.value', but this can be easily overrlooked or confusing.
+	// can use '+userInput.value', but this can be easily overlooked or confusing.
 	// 'parseInt()' and 'parseFloat()" are more descriptive.
 	// parseInt is whole numbers.
 	// pasreFloat is decimal numbers.
