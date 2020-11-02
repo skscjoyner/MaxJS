@@ -51,5 +51,7 @@ const ul = document.body.firstElementChild.nextElementSibling;
 const firstLi = ul.firstElementChild;
 console.log(firstLi); // 'li'
 
+// */*/* SELECTING ALL ELEMENTS *\*\*
 
-
+// Gives a NodeList
+// const allLis = document.querySelectorAll('li') // Selects ALL 'li' elements requested.
