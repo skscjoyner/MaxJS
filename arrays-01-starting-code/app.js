@@ -40,6 +40,7 @@
 //   }
 // }
 
+
 // ADDING OR REMOVING ITEMS AT THE BEGINNING OR END OF THE ARRAY
 // PUSH and POP are faster than SHIFT and UNSHIFT because they only affect the LAST value in the array.
 const hobbies = ['Sports', 'Cooking'];
@@ -47,10 +48,26 @@ hobbies.push('Reading'); // adds item to the end of the array.
 hobbies.unshift('Coding'); // adds item to the beginning of the array.
 const poppedValue = hobbies.pop(); // Removes the last element in the array. - RETURNS THE ELEMENT TYPE REMOVED.
 hobbies.shift() // removes item at the BEGINNING of the array. Moves elements 1 space to the left.
-console.log(hobbies);
+console.log('initial -', hobbies);
 
 // Changing items other than first or last
 hobbies[1] = 'Biking'; // Replaces 2nd item to Biking.
 // hobbies[5] = 'Smelling'; // Results in 'empty' indicies before element due to 'index - 5' selection. RARELY USED!!!
-console.log(hobbies, hobbies[4]);
+console.log('index hobbies', hobbies, hobbies[4]); // hobbies[4] undefined because index is 'empty'.
 
+
+// */*/* THE SPLICE METHOD - inserting elements between exiting elements *\*\*
+// Splice must be used on REAL ARRAYS and RETURNS new array.
+// // - Takes 3 arguments: 1. index to start. 2. how many places to replace. 3. What to replace them with.
+// NOTE - If no 3rd argument, will delete item at specified index.
+// hobbies.splice(0, 1); // Sports, Biking
+// console.log('splice - 0, 1', hobbies);
+
+// hobbies.splice(0, 0, 'Good Food'); // Good Food, Sports, Cooking - started at index 0
+// console.log('splice - 0, 0', hobbies);
+
+hobbies.splice(1, 0, 'Good Food'); // Sports, Good Food, Biking - started at index 0
+console.log('splice - 1, 0', hobbies);
+
+const removedElements = hobbies.splice(-2, 1); // removes last item due to looking on the right of the array.
+console.log('removed Elements - ', hobbies); // Sports, Biking
