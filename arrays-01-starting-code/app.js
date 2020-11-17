@@ -22,5 +22,5 @@ console.log('numbers -', numbers);
 const listItems = document.querySelectorAll('li'); // Nodelist - can iterate through it. ARRAY LIKE OBJECT - NOT A REAL ARRAY
 console.log('listItems -', listItems);
 
-const arrayListItems = Array.from(listItems); // Convert array-like or iterables to real arrays.
+const arrayListItems = Array.from(listItems); // Convert array-like or iterables to REAL ARRAYS OR HTML COLLECTION.
 console.log('arrayListItems -', arrayListItems);
