@@ -97,10 +97,13 @@ testResults.push(5.91);
 console.log('storedResults - ', storedResults); // [1, 5.3, 1.5, 10.99, -5, 10, 3.99, 2] NOTE: 3.99 and 2 added.
 console.log('testResults- ', testResults); // [1, 5.3, 1.5, 10.99, -5, 10, 5.91] NOTE: 5.91 added
 
+// */*/* INCLUDES *\*\*
+console.log('includes - ', testResults.includes(10.99)); // returns true.
+
 // NEW SECTION
 // */*/* INDEXOF AND LASTINDEXOF *\*\*
-console.log('ondexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
-console.log('ondexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
+console.log('indexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
+console.log('lastIndexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
 
 const personData = [{name: 'Shawn'}, {name: 'Manuel'}];
 console.log(personData.indexOf({name: 'Manuel'})); // returns -1 unable to find due to reference data.
