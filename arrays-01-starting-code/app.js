@@ -24,3 +24,19 @@ console.log('listItems -', listItems);
 
 const arrayListItems = Array.from(listItems); // Convert array-like or iterables to REAL ARRAYS OR HTML COLLECTION.
 console.log('arrayListItems -', arrayListItems);
+
+
+// */*/* MORE ON ARRAYS - INDEX BASED *\*\*
+const hobbies = ['Cooking', 'Sports']; // normal array
+const personalData = [30, 'Shawn', {moreDetails: []}];  // different types - mixed data
+
+const analyticsData = [[1, 1.6], [-5.4, 2.1]]; // nested or multi-dimensional arrays 
+
+// Data must be iterable or loop will break EXCEPTION - strings or other arrays will work.
+// const analyticsData = [[1, 1.6], [-5.4, 2.1], 5]; // this will break the loop due to the '5'.
+for (const data of analyticsData) {
+  for (dataPoint of data) {
+    console.log(dataPoint);
+  }
+}
+
