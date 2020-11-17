@@ -87,41 +87,58 @@
 // console.log('storedResults - ', storedResults); // returns a brand new array based on old array.
 // console.log('testResults- ', testResults); 
 
-// NEW SECTION
-// */*/* CONCAT - ADDS 2 ARRAYS TOGETHER TO MAKE A NEW ARRAY *\*\*
-const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10]; // added 2nd 1.5 for lastIndexOf()
-const storedResults = testResults.concat([3.99, 2]);
+// // NEW SECTION
+// // */*/* CONCAT - ADDS 2 ARRAYS TOGETHER TO MAKE A NEW ARRAY *\*\*
+// const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10]; // added 2nd 1.5 for lastIndexOf()
+// const storedResults = testResults.concat([3.99, 2]);
 
-testResults.push(5.91);
+// testResults.push(5.91);
 
-console.log('storedResults - ', storedResults); // [1, 5.3, 1.5, 10.99, -5, 10, 3.99, 2] NOTE: 3.99 and 2 added.
-console.log('testResults- ', testResults); // [1, 5.3, 1.5, 10.99, -5, 10, 5.91] NOTE: 5.91 added
+// console.log('storedResults - ', storedResults); // [1, 5.3, 1.5, 10.99, -5, 10, 3.99, 2] NOTE: 3.99 and 2 added.
+// console.log('testResults- ', testResults); // [1, 5.3, 1.5, 10.99, -5, 10, 5.91] NOTE: 5.91 added
 
-// */*/* INCLUDES *\*\*
-console.log('includes - ', testResults.includes(10.99)); // returns true.
+// // */*/* INCLUDES *\*\*
+// console.log('includes - ', testResults.includes(10.99)); // returns true.
 
-// NEW SECTION
-// */*/* INDEXOF AND LASTINDEXOF *\*\*
-console.log('indexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
-console.log('lastIndexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
+// // NEW SECTION
+// // */*/* INDEXOF AND LASTINDEXOF *\*\*
+// console.log('indexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
+// console.log('lastIndexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
 
-const personData = [{name: 'Shawn'}, {name: 'Manuel'}];
-console.log(personData.indexOf({name: 'Manuel'})); // returns -1 unable to find due to reference data.
+// const personData = [{name: 'Shawn'}, {name: 'Manuel'}];
+// console.log(personData.indexOf({name: 'Manuel'})); // returns -1 unable to find due to reference data.
 
-// NEW SECTION
-// */*/* FIND and FIND INDEX *\*\*
-const manuel = personData.find((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
-  return person.name === 'Manuel'; // returns {name: 'Manuel'} returns original NOT copy of item in array.
+// // NEW SECTION
+// // */*/* FIND and FIND INDEX *\*\*
+// const manuel = personData.find((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
+//   return person.name === 'Manuel'; // returns {name: 'Manuel'} returns original NOT copy of item in array.
+// });
+
+// manuel.name = 'Anna';
+
+// console.log(manuel, personData); // returns {name: "Anna"} (2) [{name: 'Shawn'}, {name: 'Manuel'}}]
+
+// // ------------  findIndex  -----------------
+
+// const shawnIndex = personData.findIndex((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
+//   return person.name === 'Shawn';
+// }); 
+
+// console.log(shawnIndex); // returns 0
+
+// */*/* FOREACH LOOP *\*\*
+
+const prices = [10.99, 5.99, 3.99, 6.59];
+const tax = 0.19;
+const taxAdjustedPrices = [];
+
+// for (const price of prices) { // does not give index
+//   taxAdjustedPrices.push(price * (1 + tax));
+// }
+// console.log('for of loop -', taxAdjustedPrices);
+
+prices.forEach((price, idx, prices) => { // gives index and can transform
+  const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
+  taxAdjustedPrices.push(priceObj);
 });
-
-manuel.name = 'Anna';
-
-console.log(manuel, personData); // returns {name: "Anna"} (2) [{name: 'Shawn'}, {name: 'Manuel'}}]
-
-// ------------  findIndex  -----------------
-
-const shawnIndex = personData.findIndex((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
-  return person.name === 'Shawn';
-}); 
-
-console.log(shawnIndex); // returns 0
+console.log('for each loop - ', taxAdjustedPrices);
