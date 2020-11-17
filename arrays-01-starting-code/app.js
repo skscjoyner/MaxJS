@@ -126,20 +126,32 @@
 
 // console.log(shawnIndex); // returns 0
 
+// // NEW SECTION
+// // */*/* FOREACH LOOP *\*\*
+
+// const prices = [10.99, 5.99, 3.99, 6.59];
+// const tax = 0.19;
+// const taxAdjustedPrices = [];
+
+// // for (const price of prices) { // does not give index
+// //   taxAdjustedPrices.push(price * (1 + tax));
+// // }
+// // console.log('for of loop -', taxAdjustedPrices);
+
+// prices.forEach((price, idx, prices) => { // gives index and can transform
+//   const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
+//   taxAdjustedPrices.push(priceObj);
+// });
+// console.log('for each loop - ', taxAdjustedPrices);
+
 // NEW SECTION
-// */*/* FOREACH LOOP *\*\*
+// */*/* MAP *\*\*
 
 const prices = [10.99, 5.99, 3.99, 6.59];
 const tax = 0.19;
-const taxAdjustedPrices = [];
 
-// for (const price of prices) { // does not give index
-//   taxAdjustedPrices.push(price * (1 + tax));
-// }
-// console.log('for of loop -', taxAdjustedPrices);
-
-prices.forEach((price, idx, prices) => { // gives index and can transform
+const taxAdjustedPrices = prices.map((price, idx, prices) => { // gives index and can transform
   const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
-  taxAdjustedPrices.push(priceObj);
+  return priceObj; // Must return something - a map for a transformed array in memory. Original array untouched.
 });
-console.log('for each loop - ', taxAdjustedPrices);
+console.log('map prices - ', prices, taxAdjustedPrices);
