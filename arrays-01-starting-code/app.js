@@ -126,6 +126,7 @@
 
 // console.log(shawnIndex); // returns 0
 
+// NEW SECTION
 // */*/* FOREACH LOOP *\*\*
 
 const prices = [10.99, 5.99, 3.99, 6.59];
