@@ -89,10 +89,18 @@
 
 // // NEW SECTION
 // */*/* CONCAT - ADDS 2 ARRAYS TOGETHER TO MAKE A NEW ARRAY *\*\*
-const testResults = [1, 5.3, 1.5, 10.99, -5, 10];
+const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10]; // added 2nd 1.5 for lastIndexOf()
 const storedResults = testResults.concat([3.99, 2]);
 
 testResults.push(5.91);
 
 console.log('storedResults - ', storedResults); // [1, 5.3, 1.5, 10.99, -5, 10, 3.99, 2] NOTE: 3.99 and 2 added.
 console.log('testResults- ', testResults); // [1, 5.3, 1.5, 10.99, -5, 10, 5.91] NOTE: 5.91 added
+
+// NEW SECTION
+// */*/* INDEXOF AND LASTINDEXOF *\*\*
+console.log('ondexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
+console.log('ondexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
+
+const personData = [{name: 'Shawn'}, {name: 'Max'}];
+console.log(personData.indexOf({name: 'Shawn'})); // returns -1 unable to find due to reference data.
