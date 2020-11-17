@@ -87,7 +87,7 @@
 // console.log('storedResults - ', storedResults); // returns a brand new array based on old array.
 // console.log('testResults- ', testResults); 
 
-// // NEW SECTION
+// NEW SECTION
 // */*/* CONCAT - ADDS 2 ARRAYS TOGETHER TO MAKE A NEW ARRAY *\*\*
 const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10]; // added 2nd 1.5 for lastIndexOf()
 const storedResults = testResults.concat([3.99, 2]);
@@ -102,5 +102,23 @@ console.log('testResults- ', testResults); // [1, 5.3, 1.5, 10.99, -5, 10, 5.91]
 console.log('ondexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
 console.log('ondexOf - ', testResults.lastIndexOf(1.5)); // returns 1st matching element from the right.
 
-const personData = [{name: 'Shawn'}, {name: 'Max'}];
-console.log(personData.indexOf({name: 'Shawn'})); // returns -1 unable to find due to reference data.
+const personData = [{name: 'Shawn'}, {name: 'Manuel'}];
+console.log(personData.indexOf({name: 'Manuel'})); // returns -1 unable to find due to reference data.
+
+// NEW SECTION
+// */*/* FIND and FIND INDEX *\*\*
+const manuel = personData.find((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
+  return person.name === 'Manuel'; // returns {name: 'Manuel'} returns original NOT copy of item in array.
+});
+
+manuel.name = 'Anna';
+
+console.log(manuel, personData); // returns {name: "Anna"} (2) [{name: 'Shawn'}, {name: 'Manuel'}}]
+
+// ------------  findIndex  -----------------
+
+const shawnIndex = personData.findIndex((person, idx, persons) => { // 3 arguments. 1. single obj of array. 2. index of  single element. 3. full array.
+  return person.name === 'Shawn';
+}); 
+
+console.log(shawnIndex); // returns 0
