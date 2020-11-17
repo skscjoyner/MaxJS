@@ -144,8 +144,21 @@
 // });
 // console.log('for each loop - ', taxAdjustedPrices);
 
+// // NEW SECTION
+// // */*/* MAP *\*\*
+
+// const prices = [10.99, 5.99, 3.99, 6.59];
+// const tax = 0.19;
+
+// const taxAdjustedPrices = prices.map((price, idx, prices) => { // gives index and can transform
+//   const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
+//   return priceObj; // Must return something - a map for a transformed array in memory. Original array untouched.
+// });
+
+// // console.log('map prices - ', prices, taxAdjustedPrices);
+
 // NEW SECTION
-// */*/* MAP *\*\*
+// */*/* SORT AND REVERSE *\*\*
 
 const prices = [10.99, 5.99, 3.99, 6.59];
 const tax = 0.19;
@@ -154,4 +167,17 @@ const taxAdjustedPrices = prices.map((price, idx, prices) => { // gives index an
   const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
   return priceObj; // Must return something - a map for a transformed array in memory. Original array untouched.
 });
-console.log('map prices - ', prices, taxAdjustedPrices);
+
+const sortedPrices = prices.sort((a, b) => {
+  if (a > b) {
+    return 1; // -1
+  } else if (a === b) {
+    return 0;
+  } else {
+    return -1; // 1 
+  }
+});
+
+console.log('sorted - ', sortedPrices); // returns [3.99, 5.99, 6.59, 10.99]
+// NOTE - could change conditions and will also reverse the order. SEE ABOVE
+console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99, 3.99]
