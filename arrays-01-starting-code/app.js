@@ -185,8 +185,11 @@ console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99
 // NEW SECTION
 // */*/* FILTER *\*\*
 
-const filteredArray = prices.filter((price, index, prices) => { // returns a brand new array
-  return price > 6;
-});
+// const filteredArray = prices.filter((price, index, prices) => {
+//   return price > 6; // returns a brand new array
+// });
+
+// Since only 1 expression, no return statement or curly braces needed. This is why arrow functions are better.
+const filteredArray = prices.filter(price => price > 6); // returns automatically.
 
 console.log('filter -', filteredArray);
