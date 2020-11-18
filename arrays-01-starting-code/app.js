@@ -185,7 +185,7 @@ console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99
 // NEW SECTION
 // */*/* FILTER *\*\*
 
-const filteredArray = prices.filter((price, index, prices) => {
+const filteredArray = prices.filter((price, index, prices) => { // returns a brand new array
   return price > 6;
 });
 
