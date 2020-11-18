@@ -16,7 +16,7 @@
 
 
 // // // CHECK THIS OUT
-// // const moreNumbers = Array.from("Hi!"); // will make an array out of what's in the ().
+// // const moreNumbers = Array.from("Hi!"); // will make an array out of what's in the (). ['H', 'i', '!']
 // // console.log('moreNumbers -', moreNumbers);
 
 // const listItems = document.querySelectorAll('li'); // Nodelist - can iterate through it. ARRAY LIKE OBJECT - NOT A REAL ARRAY
@@ -221,3 +221,10 @@ console.log('reduce - ', sum);
 const sum1 = prices.reduce((prevValue, currValue) => prevValue + currValue, 0);
 
 console.log('reduce1 - ', sum1);
+
+// CHAINING METHODS TOGETHER
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum3 = originalArray.map(obj => obj.price)
+    .reduce((sumVal, curVal) => sumVal + curVal, 0);
+
+    console.log('sum3 - ', sum3);
