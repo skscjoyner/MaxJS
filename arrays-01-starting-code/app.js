@@ -193,3 +193,31 @@ console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99
 const filteredArray = prices.filter(price => price > 6); // returns automatically.
 
 console.log('filter -', filteredArray);
+
+
+// NEW SECTION 
+// */*/* REDUCE METHOD  - Reduces an array to a simpler value (ex. singel value) *\*\*
+
+// let sum = 0;
+
+// prices.forEach((price) => {
+//   sum += price;
+// });
+
+// console.log('reduce - ', sum);
+
+
+const sum = prices.reduce((prevValue, currValue, currIndex, originalArray) => {
+// prevValue = 0 or value set by developer
+// currValue = 1st value in the array
+// currIndex = index of value in the array
+// originalArray = starting point
+return prevValue + currValue;
+}, 0);
+
+console.log('reduce - ', sum);
+
+// The above reduces to the following:
+const sum1 = prices.reduce((prevValue, currValue) => prevValue + currValue, 0);
+
+console.log('reduce1 - ', sum1);
