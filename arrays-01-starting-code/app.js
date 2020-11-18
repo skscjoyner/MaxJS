@@ -40,6 +40,7 @@
 //   }
 // }
 
+
 // // NEW SECTION
 // // ADDING OR REMOVING ITEMS AT THE BEGINNING OR END OF THE ARRAY
 // // PUSH and POP are faster than SHIFT and UNSHIFT because they only affect the LAST value in the array.
@@ -54,6 +55,7 @@
 // hobbies[1] = 'Biking'; // Replaces 2nd item to Biking.
 // // hobbies[5] = 'Smelling'; // Results in 'empty' indicies before element due to 'index - 5' selection. RARELY USED!!!
 // console.log('index hobbies', hobbies, hobbies[4]); // hobbies[4] undefined because index is 'empty'.
+
 
 // // NEW SECTION
 // // */*/* THE SPLICE METHOD - inserting elements between exiting elements *\*\*
@@ -72,6 +74,7 @@
 // const removedElements = hobbies.splice(-2, 1); // removes last item due to looking on the right of the array.
 // console.log('removed Elements - ', hobbies); // Sports, Biking
 
+
 // // NEW SECTION
 // // */*/* SLICE METHOD  - COPIES ARRAYS*\*\*
 // const testResults = [1, 5.3, 1.5, 10.99, -5, 10];
@@ -87,6 +90,7 @@
 // console.log('storedResults - ', storedResults); // returns a brand new array based on old array.
 // console.log('testResults- ', testResults); 
 
+
 // // NEW SECTION
 // // */*/* CONCAT - ADDS 2 ARRAYS TOGETHER TO MAKE A NEW ARRAY *\*\*
 // const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10]; // added 2nd 1.5 for lastIndexOf()
@@ -100,6 +104,7 @@
 // // */*/* INCLUDES *\*\*
 // console.log('includes - ', testResults.includes(10.99)); // returns true.
 
+
 // // NEW SECTION
 // // */*/* INDEXOF AND LASTINDEXOF *\*\*
 // console.log('indexOf - ', testResults.indexOf(1.5)); // returns 1st matching element.
@@ -107,6 +112,7 @@
 
 // const personData = [{name: 'Shawn'}, {name: 'Manuel'}];
 // console.log(personData.indexOf({name: 'Manuel'})); // returns -1 unable to find due to reference data.
+
 
 // // NEW SECTION
 // // */*/* FIND and FIND INDEX *\*\*
@@ -126,6 +132,7 @@
 
 // console.log(shawnIndex); // returns 0
 
+
 // // NEW SECTION
 // // */*/* FOREACH LOOP *\*\*
 
@@ -144,6 +151,7 @@
 // });
 // console.log('for each loop - ', taxAdjustedPrices);
 
+
 // // NEW SECTION
 // // */*/* MAP *\*\*
 
@@ -157,74 +165,133 @@
 
 // // console.log('map prices - ', prices, taxAdjustedPrices);
 
-// NEW SECTION
-// */*/* SORT AND REVERSE *\*\*
 
-const prices = [10.99, 5.99, 3.99, 6.59];
-const tax = 0.19;
+// // NEW SECTION
+// // */*/* SORT AND REVERSE *\*\*
 
-const taxAdjustedPrices = prices.map((price, idx, prices) => { // gives index and can transform
-  const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
-  return priceObj; // Must return something - a map for a transformed array in memory. Original array untouched.
-});
+// const prices = [10.99, 5.99, 3.99, 6.59];
+// const tax = 0.19;
 
-const sortedPrices = prices.sort((a, b) => {
-  if (a > b) {
-    return 1; // -1
-  } else if (a === b) {
-    return 0;
-  } else {
-    return -1; // 1 
-  }
-});
-
-console.log('sorted - ', sortedPrices); // returns [3.99, 5.99, 6.59, 10.99]
-// NOTE - could change conditions and will also reverse the order. SEE ABOVE
-console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99, 3.99]
-
-// NEW SECTION
-// */*/* FILTER *\*\*
-
-// const filteredArray = prices.filter((price, index, prices) => {
-//   return price > 6; // returns a brand new array
+// const taxAdjustedPrices = prices.map((price, idx, prices) => { // gives index and can transform
+//   const priceObj = { index: idx, taxAdjPrice: price + (1 * tax) }
+//   return priceObj; // Must return something - a map for a transformed array in memory. Original array untouched.
 // });
 
-// Since only 1 expression, no return statement or curly braces needed. This is why arrow functions are better.
-const filteredArray = prices.filter(price => price > 6); // returns automatically.
-
-console.log('filter -', filteredArray);
-
-
-// NEW SECTION 
-// */*/* REDUCE METHOD  - Reduces an array to a simpler value (ex. singel value) *\*\*
-
-// let sum = 0;
-
-// prices.forEach((price) => {
-//   sum += price;
+// const sortedPrices = prices.sort((a, b) => {
+//   if (a > b) {
+//     return 1; // -1
+//   } else if (a === b) {
+//     return 0;
+//   } else {
+//     return -1; // 1 
+//   }
 // });
+
+// console.log('sorted - ', sortedPrices); // returns [3.99, 5.99, 6.59, 10.99]
+// // NOTE - could change conditions and will also reverse the order. SEE ABOVE
+// console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99, 3.99]
+
+
+// // NEW SECTION
+// // */*/* FILTER *\*\*
+
+// // const filteredArray = prices.filter((price, index, prices) => {
+// //   return price > 6; // returns a brand new array
+// // });
+
+// // Since only 1 expression, no return statement or curly braces needed. This is why arrow functions are better.
+// const filteredArray = prices.filter(price => price > 6); // returns automatically.
+
+// console.log('filter -', filteredArray);
+
+
+// // NEW SECTION 
+// // */*/* REDUCE METHOD  - Reduces an array to a simpler value (ex. singel value) *\*\*
+
+// // let sum = 0;
+
+// // prices.forEach((price) => {
+// //   sum += price;
+// // });
+
+// // console.log('reduce - ', sum);
+
+
+// const sum = prices.reduce((prevValue, currValue, currIndex, originalArray) => {
+// // prevValue = 0 or value set by developer
+// // currValue = 1st value in the array
+// // currIndex = index of value in the array
+// // originalArray = starting point
+// return prevValue + currValue;
+// }, 0);
 
 // console.log('reduce - ', sum);
 
+// // The above reduces to the following:
+// const sum1 = prices.reduce((prevValue, currValue) => prevValue + currValue, 0);
 
-const sum = prices.reduce((prevValue, currValue, currIndex, originalArray) => {
-// prevValue = 0 or value set by developer
-// currValue = 1st value in the array
-// currIndex = index of value in the array
-// originalArray = starting point
-return prevValue + currValue;
-}, 0);
+// console.log('reduce1 - ', sum1);
 
-console.log('reduce - ', sum);
+// // CHAINING METHODS TOGETHER
+// const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+// const sum3 = originalArray.map(obj => obj.price)
+//     .reduce((sumVal, curVal) => sumVal + curVal, 0);
 
-// The above reduces to the following:
-const sum1 = prices.reduce((prevValue, currValue) => prevValue + currValue, 0);
+//     console.log('sum3 - ', sum3);
 
-console.log('reduce1 - ', sum1);
 
-// CHAINING METHODS TOGETHER
-const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
-const sum3 = originalArray.map(obj => obj.price)
-    .reduce((sumVal, curVal) => sumVal + curVal, 0);
+// // NEW SECTION
+// // */*/* SPLIT AND JOIN *\*\*
+// // SPLIT allows you to split a string into an array. Also can transform strings into numbers.
 
-    console.log('sum3 - ', sum3);
+// const data = 'new york;10.99;2000';
+// // converts a string into an array of multiple segments. 
+// // Argument is separator. 
+// // Optional 2nd argument to limit number of arguments.
+// const transformedData = data.split(';'); 
+// transformedData[1] = +transformedData[1]; // transforms the 2nd item into a number.
+// console.log('split -', transformedData);
+
+// const nameFragments = ['Max', 'Schwartz']; // converts an array into a string
+// const name = nameFragments.join(' '); // adds a space between the items. ',' is default separator.
+// console.log('join - ', name);
+
+
+// // NEW SECTION
+// // */*/* SPREAD OPERATOR *\*\*
+// // Pulls all items out of an array and returns them as individual items.
+
+// const copiedNamedFragments = [...nameFragments]; 
+// nameFragments.push('Mr'); // pushed to the original array ONLY
+// console.log('spread operator - ', nameFragments); // ['Max', Schwarz', 'Mr']
+// console.log('spread -', copiedNamedFragments); // ['Max', 'Schwarz']
+
+// console.log(Math.min(...prices));
+
+// const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 31}];
+// const copiedPersons = [...persons];
+// // Use only if you DON'T want changes reflected in the new array.
+// // const copiedPersons = persons.map(person => ({ // clone the outer object, but not the inner object (ex. hobbies)
+// //   name: person.name, // only copy the things you plan on changing.
+// //   age: person.age
+// // }));
+
+// persons.push({name: 'Anna', age: 29});
+// persons[0].age = 31; // changes the age in both arrays
+
+// console.log('persons - ', persons);
+// console.log('copied persons - ', copiedPersons);
+
+
+// NEW SECTION
+// */*/* ARRAY DESTRUCTURING *\*\*
+// Split an array into variables
+const  nameData = ['Max', 'Schwarz', 'Mr', 30];
+// const firstName = nameData[0];
+// const lastName = nameData[1];
+
+const [firstName, lastName, ...otherInformation] = nameData; 
+// '...otherInformation' is REST Operator NOT SPREAD operator because it 'collects' all other items 
+// and stores them in a NEW variable (array).
+
+console.log(firstName, lastName, otherInformation); // read left to right, assigned in order.
