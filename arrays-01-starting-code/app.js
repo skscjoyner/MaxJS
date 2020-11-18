@@ -181,3 +181,12 @@ const sortedPrices = prices.sort((a, b) => {
 console.log('sorted - ', sortedPrices); // returns [3.99, 5.99, 6.59, 10.99]
 // NOTE - could change conditions and will also reverse the order. SEE ABOVE
 console.log('reversed -', sortedPrices.reverse()); // returns [10.99, 6.59, 5.99, 3.99]
+
+// NEW SECTION
+// */*/* FILTER *\*\*
+
+const filteredArray = prices.filter((price, index, prices) => {
+  return price > 6;
+});
+
+console.log('filter -', filteredArray);
