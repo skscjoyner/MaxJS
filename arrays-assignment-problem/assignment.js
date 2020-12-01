@@ -7,7 +7,7 @@ console.log('filter > 5 - ', filteredNums); // 6, 8, 10, 25
 
 // TASK 1B
 const numMap = nums.map(nums => ({num: nums}));
-console.log('map - ', numMap);
+console.log('map - ', numMap); // [{num: 1}, {num: 3}, {num: 8}, {num: 45}, {num: 10}, {num: 25}]
 
 // TASK 1C
 const reducedNum = nums.reduce((currResult, currVal) => currResult * currVal, 1);
