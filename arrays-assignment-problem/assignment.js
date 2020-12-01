@@ -1,5 +1,6 @@
 // TASK 1
 const nums = [1, 3, 8, 45, 10, 25];
+console.log('array - ', nums); // [1, 3, 8, 45, 10, 25]
 
 // TASK 1A
 const filteredNums = nums.filter(num => num > 5);
