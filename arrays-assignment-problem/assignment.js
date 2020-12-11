@@ -4,7 +4,7 @@ console.log('array - ', nums); // [1, 3, 8, 45, 10, 25]
 
 // TASK 1A
 const filteredNums = nums.filter(num => num > 5);
-console.log('filter > 5 - ', filteredNums); // 6, 8, 10, 25
+console.log('filter > 5 - ', filteredNums); // [8, 10, 25, 45]
 
 // TASK 1B
 const numMap = nums.map(nums => ({num: nums}));
@@ -55,3 +55,10 @@ list.add(3);
 list.add(1);
 
 console.log(list); // {1, 3}
+
+
+// */*/*  CHAINED METHODS  *\*\*
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum = originalArray.map(obj => obj.price)
+    .reduce((sumVal, curVal) => sumVal + curVal, 0);
+    console.log('chain - ', sum);
