@@ -60,5 +60,5 @@ console.log(list); // {1, 3}
 // */*/*  CHAINED METHODS  *\*\*
 const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
 const sum = originalArray.map(obj => obj.price)
-    .reduce((sumVal, curVal) => sumVal + curVal, 0);
-    console.log('chain - ', sum);
+    .reduce((sumVal, curVal) => sumVal + curVal, 0); // add sumVal to curVal
+    console.log('chain - ', sum); //46.97 - added all values
