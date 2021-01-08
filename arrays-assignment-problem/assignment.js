@@ -62,3 +62,18 @@ const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
 const sum = originalArray.map(obj => obj.price)
     .reduce((sumVal, curVal) => sumVal + curVal, 0); // add sumVal to curVal
     console.log('chain - ', sum); //46.97 - added all values
+
+
+function greeting() {
+  let name = prompt('What is your Name');
+  let result = "Hello " + name
+  console.log(result);
+}
+greeting();
+
+
+function add(num1, num2) {
+  let result = num1 + num2;
+  console.log(result);
+}
+add(11, 5);
