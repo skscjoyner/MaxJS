@@ -52,14 +52,14 @@ const renderMovies = () => {
   movies.forEach((movie) => {
     const movieEl = document.createElement('li');
     // movieEl.textContent = movie.info.title;
-    let text = movie.info.title + ' - '; // to output extraName and extraValue
+    let text = movie.info.title + ' - '; // to render the title
     for (const key in movie.info) { // to loop through all movies
-      if (key !== 'title') {
-        text = text + `${key}: ${movie.info[key]}`;
+      if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
+        text = text + `${key}: ${movie.info[key]}`; // to output extraName and extraValue - dynamic property info
       }
     }
     movieEl.textContent = text;
-    movieList.append(movieEl)
+    movieList.append(movieEl);
   });
 };
 
