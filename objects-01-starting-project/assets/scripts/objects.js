@@ -80,7 +80,7 @@ const addMovieHandler = () => {
       title,
       [extraName]: extraValue // [] - needed to assign a DYNAMIC PROPERTY NAME
     },
-    id: Math.random()
+    id: Math.random() // to assigin a pseudo-unique id.
   };
 
   movies.push(newMovie);
