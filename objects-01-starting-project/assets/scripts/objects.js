@@ -95,6 +95,7 @@ searchBtn.addEventListener('click', searchMovieHandler);
 // console.log(person[1.5]); // with or without quotes.
 // // person.greet(); // stopped the alert from popping up.
 
+
 // */*/* OBJECT SPREAD OPERATOR *\*\*
 
 // const person = {name: 'Shawn', hobbies: ['Sports', 'Cooking']};
@@ -109,4 +110,11 @@ searchBtn.addEventListener('click', searchMovieHandler);
 // person.hobbies.pop(); // OUTPUT: {name: 'Shawn', hobbies: ['Sports', 'Cooking'], age: 31}
 // person3 //OUTPUT: {name: 'Shawn', hobbies: ['Sports', 'Cooking', 'Coding'], age: 29}
 
+
+// */*/* OBJECT.ASSIGN() SIMILAR TO OBJECT SPREAD OPERATOR (is better) *\*\*
+
+const person = {name: 'Shawn'};
+const person2 = Object.assign({}, person); // OUTPUT: {name: 'Shawn'};
+person.name = 'Robert'; // OUTPUT: {name: 'Robert'};
+person2 // OUTPUT: // OUTPUT: {name: 'Shawn'};
 
