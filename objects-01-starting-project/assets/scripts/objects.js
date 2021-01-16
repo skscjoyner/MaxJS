@@ -53,7 +53,6 @@ const renderMovies = (filter = '') => {
 
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement('li');
-    // movieEl.textContent = movie.info.title;
     let text = movie.info.title + ' - '; // to render the title
     for (const key in movie.info) { // to loop through all movies
       if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
@@ -89,8 +88,8 @@ const addMovieHandler = () => {
 };
 
 const searchMovieHandler = () => {
-  const filterTerm = document.getElementById('filter-title').value;
-  renderMovies(filterTerm);
+  const searchedMovie = document.getElementById('filter-title').value;
+  renderMovies(searchedMovie);
 };
 
 addMovieBtn.addEventListener('click', addMovieHandler);
