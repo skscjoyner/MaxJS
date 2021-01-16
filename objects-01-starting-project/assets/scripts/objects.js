@@ -53,7 +53,7 @@ const renderMovies = (filter = '') => {
 
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement('li');
-    let text = movie.info.title + ' - '; // to render the title
+    let text = movie.info.title + ' - '; // to render the title. Also, this is chaining methods/props together.
     for (const key in movie.info) { // to loop through all movies
       if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
         text = text + `${key}: ${movie.info[key]}`; // to output extraName and extraValue - dynamic property info
