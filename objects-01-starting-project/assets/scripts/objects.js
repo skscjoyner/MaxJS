@@ -113,8 +113,8 @@ searchBtn.addEventListener('click', searchMovieHandler);
 
 // */*/* OBJECT.ASSIGN() SIMILAR TO OBJECT SPREAD OPERATOR (is better) *\*\*
 
-const person = {name: 'Shawn'};
-const person2 = Object.assign({}, person); // OUTPUT: {name: 'Shawn'};
-person.name = 'Robert'; // OUTPUT: {name: 'Robert'};
-person2 // OUTPUT: // OUTPUT: {name: 'Shawn'};
+// const person = {name: 'Shawn'};
+// const person2 = Object.assign({}, person); // OUTPUT: {name: 'Shawn'};
+// person.name = 'Robert'; // OUTPUT: {name: 'Robert'};
+// person2 // OUTPUT: // OUTPUT: {name: 'Shawn'};
 
