@@ -32,8 +32,10 @@ const renderMovies = (filter = '') => {
     
     // /*/*/* ALTERNATE USE OF 'THIS' KEYWORD using 'BIND'*\*\*\
     let { getFormattedTitle } = movie;
-    getFormattedTitle = getFormattedTitle.bind(movie); 
-    let text = getFormattedTitle() + ' - '; 
+    // getFormattedTitle = getFormattedTitle.bind(movie); // prepares a function for future use.
+    // let text = getFormattedTitle() + ' - '; 
+    // let text = getFormattedTitle.call(movie) + ' - '; // using CALL instead of BIND - 1st arg = object, can add additional args. Calls function immediately.
+    let text = getFormattedTitle.apply(movie) + ' - '; // using APPLY instead of BIND - ONLY 1 arg must be array. Calls function immediately.
     
     // let text = movie.getFormattedTitle() + ' - '; 
     for (const key in movie.info) { // to loop through all movies
