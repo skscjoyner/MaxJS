@@ -25,9 +25,11 @@ const renderMovies = (filter = '') => {
     // OBJECT DESTRUCTURING METHOD AND SYNTAX
     const { info, ...otherProps } = movie; // MUST enter the KEY NAME in the object. Can use the REST OPERATOR (...otherProps) for the remaining properties.
     console.log(otherProps); // OUTPUT: id - only other line property in the INFO object.
-    const { title: movieTitle } = info; // Destructuring the object to get the INFO. Can assign a NEW NAME - movieTitle - to the object.
+    // const { title: movieTitle } = info; // Destructuring the object to get the INFO. Can assign a NEW NAME - movieTitle - to the object.
+    // const { getFormattedTitle } = movie;
     // let text = movie.info.title + ' - '; // to render the title. Also, this is chaining methods/props together.
-    let text = movieTitle + ' - '; //
+    // let text = movieTitle.toUpperCase() + ' - '; // will lead to problem???
+    let text = movie.getFormattedTitle() + ' - '; 
     for (const key in movie.info) { // to loop through all movies
       if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
         // text = text + `${key}: ${movie.info[key]}`; // to output extraName and extraValue - dynamic property info
@@ -54,7 +56,11 @@ const addMovieHandler = () => {
       title,
       [extraName]: extraValue // [] - needed to assign a DYNAMIC PROPERTY NAME
     },
-    id: Math.random() // to assigin a pseudo-unique id.
+    id: Math.random(), // to assigin a pseudo-unique id.
+    // getFormattedTitle: function() {
+    getFormattedTitle() { // shorthand for the above code
+      return this.info.title.toUpperCase();
+    }
   };
 
   movies.push(newMovie);
