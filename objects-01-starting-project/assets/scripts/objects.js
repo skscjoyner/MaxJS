@@ -18,6 +18,10 @@ const renderMovies = (filter = '') => {
 
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement('li');
+    // // the 'in' keyword allows you to check if a property exists in an object.
+    // if ('info' in movie) { // (!('info' in movie)) OR ((movie.info === undefined))- to check for falsy
+    //   // code
+    // }
     // OBJECT DESTRUCTURING METHOD AND SYNTAX
     const { info, ...otherProps } = movie; // MUST enter the KEY NAME in the object. Can use the REST OPERATOR (...otherProps) for the remaining properties.
     console.log(otherProps); // OUTPUT: id - only other line property in the INFO object.
