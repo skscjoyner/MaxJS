@@ -28,8 +28,14 @@ const renderMovies = (filter = '') => {
     // const { title: movieTitle } = info; // Destructuring the object to get the INFO. Can assign a NEW NAME - movieTitle - to the object.
     // const { getFormattedTitle } = movie;
     // let text = movie.info.title + ' - '; // to render the title. Also, this is chaining methods/props together.
-    // let text = movieTitle.toUpperCase() + ' - '; // will lead to problem???
-    let text = movie.getFormattedTitle() + ' - '; 
+    // // let text = movieTitle.toUpperCase() + ' - '; // will lead to problem???
+    
+    // /*/*/* ALTERNATE USE OF 'THIS' KEYWORD using 'BIND'*\*\*\
+    let { getFormattedTitle } = movie;
+    getFormattedTitle = getFormattedTitle.bind(movie); 
+    let text = getFormattedTitle() + ' - '; 
+    
+    // let text = movie.getFormattedTitle() + ' - '; 
     for (const key in movie.info) { // to loop through all movies
       if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
         // text = text + `${key}: ${movie.info[key]}`; // to output extraName and extraValue - dynamic property info
@@ -59,6 +65,7 @@ const addMovieHandler = () => {
     id: Math.random(), // to assigin a pseudo-unique id.
     // getFormattedTitle: function() {
     getFormattedTitle() { // shorthand for the above code
+      console.log(this); // refers to the correct object it references.
       return this.info.title.toUpperCase();
     }
   };
