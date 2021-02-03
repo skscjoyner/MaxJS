@@ -24,7 +24,7 @@ const renderMovies = (filter = '') => {
     // }
     // OBJECT DESTRUCTURING METHOD AND SYNTAX
     const { info, ...otherProps } = movie; // MUST enter the KEY NAME in the object. Can use the REST OPERATOR (...otherProps) for the remaining properties.
-    console.log(otherProps); // OUTPUT: id - only other line property in the INFO object.
+    console.log('otherProps - ', otherProps); // OUTPUT: id - only other line property in the INFO object.
     // const { title: movieTitle } = info; // Destructuring the object to get the INFO. Can assign a NEW NAME - movieTitle - to the object.
     // const { getFormattedTitle } = movie;
     // let text = movie.info.title + ' - '; // to render the title. Also, this is chaining methods/props together.
@@ -54,30 +54,56 @@ const addMovieHandler = () => {
   const extraName = document.getElementById('extra-name').value;
   const extraValue = document.getElementById('extra-value').value;
 
-  if (title.trim() === '' || extraName.trim() === '' || extraValue.trim() === '') {
+  if (
+    // title.trim() === '' || // validation removed to use GET and SET
+    extraName.trim() === '' || 
+    extraValue.trim() === ''
+    ) {
     return;
   }
 
   const newMovie = {
     // title: title, // can use 'title,' ONLY IF KEY AND VALUE ARE IDENTICAL AND DERIVED DYNAMICALLY
     info: {
-      title,
+      // title, // removed to use GET and SET METHODS
+      set title(val) { // must accept a param that holds the value being set
+        this._title = val // internal value NOT the same 'title'
+        if (val.trim === '') {
+          this._title = 'DEFAULT';
+          return;
+        }
+        this._title = val;
+      },
+      get title() {
+        return this._title;
+        // return this._title.toUpperCase(); // could set upperCase property here
+      },
       [extraName]: extraValue // [] - needed to assign a DYNAMIC PROPERTY NAME
     },
     id: Math.random(), // to assigin a pseudo-unique id.
     // getFormattedTitle: function() {
     getFormattedTitle() { // shorthand for the above code
-      console.log(this); // refers to the correct object it references.
+      console.log('getFormattedTitle - THIS', this); // refers to the correct object it references.
       return this.info.title.toUpperCase();
     }
   };
+
+  newMovie.info.title = title; // assign value like a property
+  console.log('newMovie Title - ', newMovie.info.title);
+
+  // // */*/* GETTERS AND SETTERS *\*\*
+  // 1. Add extra validation
+  // 2. Transformation
+  // 3. Read only values if not setter present
+
 
   movies.push(newMovie);
   // console.log(newMovie);
   renderMovies();
 };
 
-const searchMovieHandler = () => {
+const searchMovieHandler = () => { // in an arrow function - keyword this refers to the global window object. Not bound to anything.
+  console.log('searchMovieHandler THIS - ', this);
   const searchedMovie = document.getElementById('filter-title').value;
   renderMovies(searchedMovie);
 };
