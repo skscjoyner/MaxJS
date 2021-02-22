@@ -80,7 +80,7 @@ const addMovieHandler = () => {
       },
       [extraName]: extraValue // [] - needed to assign a DYNAMIC PROPERTY NAME
     },
-    id: Math.random(), // to assigin a pseudo-unique id.
+    id: Math.random(), // to assign a pseudo-unique id.
     // getFormattedTitle: function() {
     getFormattedTitle() { // shorthand for the above code
       console.log('getFormattedTitle - THIS', this); // refers to the correct object it references.
