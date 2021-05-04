@@ -3,7 +3,7 @@ const searchBtn = document.getElementById('search-btn');
 
 const movies = [];
 
-const renderMovies = (filter = '') => {
+const renderMovies = (filter = '') => { // added default argument to use filter function. Default is empty string.
   const movieList = document.getElementById('movie-list');
 
   if (movies.length === 0) {
