@@ -18,7 +18,7 @@ const renderMovies = (filter = '') => {
 
   filteredMovies.forEach((movie) => {
     const movieEl = document.createElement('li');
-    // // the 'in' keyword allows you to check if a property exists in an object.
+    // // THE 'IN' KEYWORD allows you to check if a property exists in an object.
     // if ('info' in movie) { // (!('info' in movie)) OR ((movie.info === undefined))- to check for falsy
     //   // code
     // }
@@ -32,14 +32,14 @@ const renderMovies = (filter = '') => {
     
     // /*/*/* ALTERNATE USE OF 'THIS' KEYWORD using 'BIND'*\*\*\
     let { getFormattedTitle } = movie;
-    // getFormattedTitle = getFormattedTitle.bind(movie); // prepares a function for future use.
     // let text = getFormattedTitle() + ' - '; 
-    // let text = getFormattedTitle.call(movie) + ' - '; // using CALL instead of BIND - 1st arg = object, can add additional args. Calls function immediately.
-    let text = getFormattedTitle.apply(movie) + ' - '; // using APPLY instead of BIND - ONLY 1 arg must be array. Calls function immediately.
-    
     // let text = movie.getFormattedTitle() + ' - '; 
-    for (const key in movie.info) { // to loop through all movies
-      if (key !== 'title') { // must be string because the object is a string. Otherwise will js look for 'variable' 
+    // getFormattedTitle = getFormattedTitle.bind(movie); // prepares a function for future use.
+    // let text = getFormattedTitle.call(movie) + ' - '; // using CALL instead of BIND - 1st arg = object, can add additional args. Calls function immediately. Comma separated list.
+    let text = getFormattedTitle.apply(movie) + ' - '; // using APPLY instead of BIND - ONLY 1 arg must be array. Calls function immediately. Additional args as array.
+    
+    for (const key in info) { // to loop through all movies
+      if (key !== 'title' && key !== '_title') { // must be string because the object is a string. Otherwise will js look for 'variable'. IF USING SET/GET MUST EXCLUDE 'INTERNAL' TITLE.
         // text = text + `${key}: ${movie.info[key]}`; // to output extraName and extraValue - dynamic property info
         text = text + `${key}: ${info[key]}`; // 
       }
@@ -68,7 +68,7 @@ const addMovieHandler = () => {
       // title, // removed to use GET and SET METHODS
       set title(val) { // must accept a param that holds the value being set
         this._title = val // internal value NOT the same 'title'
-        if (val.trim === '') {
+        if (val.trim() === '') {
           this._title = 'DEFAULT';
           return;
         }
@@ -83,7 +83,7 @@ const addMovieHandler = () => {
     id: Math.random(), // to assign a pseudo-unique id.
     // getFormattedTitle: function() {
     getFormattedTitle() { // shorthand for the above code
-      console.log('getFormattedTitle - THIS', this); // refers to the correct object it references.
+      // console.log('getFormattedTitle - THIS', this); // refers to the correct object it references.
       return this.info.title.toUpperCase();
     }
   };
@@ -94,7 +94,7 @@ const addMovieHandler = () => {
   // // */*/* GETTERS AND SETTERS *\*\*
   // 1. Add extra validation
   // 2. Transformation
-  // 3. Read only values if not setter present
+  // 3. Read only values if setter NOT present - ERROR!!
 
 
   movies.push(newMovie);
@@ -124,15 +124,17 @@ searchBtn.addEventListener('click', searchMovieHandler);
 
 // const person = {
 //   // name: 'Shawn',
-//   'first-name': 'Shawn', // string property name
+//   'first name': 'Shawn', // string property name
 //   age: 30,
 //   hobbies: ['Sports', 'Cooking'],
-//   [userChosenKeyName]: '...',
+//   // [userChosenKeyName]: '...',
 //   greet: function() {
 //     alert('Hi!');
 //   },
 //   1.5: 'hello'
 // }; // object literal notation
+
+// const keyName = 'first name';
 
 // // ADDING, MODIFYING, DELETING PROPERTIES
 // // Do not assign 'null' or 'undefined' to a property.
@@ -142,6 +144,7 @@ searchBtn.addEventListener('click', searchMovieHandler);
 // delete person.age // deleting a property -- returns 'undefined'
 
 // console.log(person);
+// console.log(person[keyName]);
 // console.log(person['first-name']); // to select property with KEY as a string
 // console.log(person[1.5]); // with or without quotes.
 // // person.greet(); // stopped the alert from popping up.
