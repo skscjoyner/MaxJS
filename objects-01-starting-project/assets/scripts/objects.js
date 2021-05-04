@@ -16,7 +16,7 @@ const renderMovies = (filter = '') => {
 
   const filteredMovies = !filter ? movies : movies.filter(movie => movie.info.title.includes(filter));
 
-  filteredMovies.forEach((movie) => {
+  filteredMovies.forEach((movie) => { // movies.forEach() - without filter logic.
     const movieEl = document.createElement('li');
     // // THE 'IN' KEYWORD allows you to check if a property exists in an object.
     // if ('info' in movie) { // (!('info' in movie)) OR ((movie.info === undefined))- to check for falsy
