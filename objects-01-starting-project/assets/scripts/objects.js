@@ -24,7 +24,7 @@ const renderMovies = (filter = '') => { // added default argument to use filter 
     // }
     // OBJECT DESTRUCTURING METHOD AND SYNTAX
     const { info, ...otherProps } = movie; // MUST enter the KEY NAME in the object. Can use the REST OPERATOR (...otherProps) for the remaining properties.
-    console.log('otherProps - ', otherProps); // OUTPUT: id - only other line property in the INFO object.
+    // console.log('otherProps - ', otherProps); // OUTPUT: id - only other line property in the INFO object.
     // const { title: movieTitle } = info; // Destructuring the object to get the INFO. Can assign a NEW NAME - movieTitle - to the object.
     // const { getFormattedTitle } = movie;
     // let text = movie.info.title + ' - '; // to render the title. Also, this is chaining methods/props together.
