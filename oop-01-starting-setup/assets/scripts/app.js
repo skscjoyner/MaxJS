@@ -15,10 +15,10 @@ const productList = {
   ],
   render() {
     const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
-    const prodList = document.createElement('ul'); // list of products
+    const prodList = document.createElement('ul'); // Create a list of products
     prodList.className = 'product-list'; // for styling from CSS
     for (const prod of this.products) { // to render each product
-      const prodEl = document.createElement('li'); // 
+      const prodEl = document.createElement('li'); // Create an 'li' element 
       prodEl.className = "product-item"; // for styling from CSS
       prodEl.innerHTML = `
       <div>
