@@ -1,8 +1,9 @@
 class Product {
-  title = 'DEFAULT';
-  imageUrl;
-  description;
-  price;
+  // */*/* THESE 'FIELDS' ARE NOT NEEDED SINCE THEY ARE ASSIGNED IN THE CONSTRUCTOR  *\*\*
+  // title = 'DEFAULT';
+  // imageUrl;
+  // description;
+  // price;
 
   constructor(title, image, desc, price) {
     this.title = title;
