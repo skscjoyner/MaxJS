@@ -52,6 +52,12 @@ class ProductList {
       'https://images.unsplash.com/photo-1556484207-00956c1b4847?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80',
       'A beautiful carpet you might like',
       89.99
+    ),
+    new Product(
+      'A Throw',
+      'https://images.unsplash.com/photo-1600369672770-985fd30004eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=746&q=80',
+      'A comfortable throw for you living room',
+      39.99
     )
   ];
 
@@ -65,10 +71,10 @@ class ProductList {
       const productItem = new ProductItem(prod);
       const prodEl = productItem.render();
       prodList.append(prodEl);
-      console.log('prodEl - ', prodEl);
+      console.log('prodEl - ', prodEl); // console log
     }
     renderHook.append(prodList);
-    console.log('prodList -', prodList);
+    console.log('prodList -', prodList); // console log
   }
 }
 
