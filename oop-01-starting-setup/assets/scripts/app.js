@@ -14,10 +14,25 @@ class Product {
   }
 }
 
+class ShoppingCart {
+  items = [];
+  render() {
+    const cartEl = document.createElement('section');
+    cartEl.innerHTML = `
+    <h2>Total: /$${0}</h2>
+    <button>Order Now!</button>
+    `;
+  }
+}
+
 // THIS CLASS CONTAINS THE LOGIC TO CREATE AND RENDER EACH ITEM
 class ProductItem {
   constructor(product) {
     this.product = product;
+  }
+
+  addToCart() {
+    console.log('Adding product to cart... - ', this.product);
   }
 
   render() { // responsible for rendering a single item
@@ -34,6 +49,8 @@ class ProductItem {
         </div>
       </div>
       `;
+    const addCardButton = prodEl.querySelector('button');
+    addCardButton.addEventListener('click', this.addToCart.bind(this));
     return prodEl;
   }
 }
@@ -78,5 +95,5 @@ class ProductList {
   }
 }
 
-const productList = new ProductList();
-productList.render();
+const productList = new ProductList(); // instantiate the class by doing this.
+productList.render(); // renders the product list
