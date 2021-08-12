@@ -16,12 +16,21 @@ class Product {
 
 class ShoppingCart {
   items = [];
+
+  addProduct(product) {
+    this.items.push(product);
+    this.totalOutput = `<h2>Total: \$${1}</h2>`
+  }
+
   render() {
-    const cartEl = document.createElement('section');
+    const cartEl = document.createElement('section'); // adding the placeholdr for the cart.
     cartEl.innerHTML = `
-    <h2>Total: /$${0}</h2>
+    <h2>Total: \$${0}</h2>
     <button>Order Now!</button>
     `;
+    cartEl.className = 'cart'; // adding the class for styling.
+    this.totalOutput = cartEl.querySelector('h2')
+    return cartEl;
   }
 }
 
@@ -31,8 +40,9 @@ class ProductItem {
     this.product = product;
   }
 
-  addToCart() {
+  addToCart() { // logic to add the specific item to the cart.
     console.log('Adding product to cart... - ', this.product);
+    // ShoppingCart.addProduct();
   }
 
   render() { // responsible for rendering a single item
@@ -49,8 +59,8 @@ class ProductItem {
         </div>
       </div>
       `;
-    const addCardButton = prodEl.querySelector('button');
-    addCardButton.addEventListener('click', this.addToCart.bind(this));
+    const addCardButton = prodEl.querySelector('button'); // logic to add the item bt clicking the button.
+    addCardButton.addEventListener('click', this.addToCart.bind(this)); // must bind 'this' to the eventListener
     return prodEl;
   }
 }
@@ -81,7 +91,6 @@ class ProductList {
   constructor() {}
 
   render() {
-    const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
     const prodList = document.createElement('ul'); // Create a list of products
     prodList.className = 'product-list'; // for styling from CSS
     for (const prod of this.products) { // to render each product
@@ -90,10 +99,23 @@ class ProductList {
       prodList.append(prodEl);
       console.log('prodEl - ', prodEl); // console log
     }
-    renderHook.append(prodList);
-    console.log('prodList -', prodList); // console log
+    return prodList;
+  }
+}
+class Shop {
+  render() {
+    const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
+    
+    const cart = new ShoppingCart(); // adding the shopping cart to the page.
+    const cartEl = cart.render();
+    const productList = new ProductList(); // instantiate the class by doing this.
+    const prodListEl = productList.render(); // renders the product list
+
+    renderHook.append(cartEl)
+    renderHook.append(prodListEl);
+    console.log('prodList -', prodListEl); // console log
   }
 }
 
-const productList = new ProductList(); // instantiate the class by doing this.
-productList.render(); // renders the product list
+const shop = new Shop();
+shop.render()
