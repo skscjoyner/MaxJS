@@ -19,11 +19,11 @@ class ShoppingCart {
 
   addProduct(product) {
     this.items.push(product);
-    this.totalOutput = `<h2>Total: \$${1}</h2>`
+    this.totalOutput.innerHTML = `<h2>Total: \$${1}</h2>`
   }
 
   render() {
-    const cartEl = document.createElement('section'); // adding the placeholdr for the cart.
+    const cartEl = document.createElement('section'); // adding the placeholder for the cart.
     cartEl.innerHTML = `
     <h2>Total: \$${0}</h2>
     <button>Order Now!</button>
@@ -41,8 +41,7 @@ class ProductItem {
   }
 
   addToCart() { // logic to add the specific item to the cart.
-    console.log('Adding product to cart... - ', this.product);
-    // ShoppingCart.addProduct();
+    App.addProductToCart(this.product);
   }
 
   render() { // responsible for rendering a single item
@@ -102,12 +101,13 @@ class ProductList {
     return prodList;
   }
 }
+
 class Shop {
   render() {
     const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
     
-    const cart = new ShoppingCart(); // adding the shopping cart to the page.
-    const cartEl = cart.render();
+    this.cart = new ShoppingCart(); // adding the shopping cart to the page and updating the cart.
+    const cartEl = this.cart.render();
     const productList = new ProductList(); // instantiate the class by doing this.
     const prodListEl = productList.render(); // renders the product list
 
@@ -116,6 +116,18 @@ class Shop {
     console.log('prodList -', prodListEl); // console log
   }
 }
+class App {
+  static cart;
 
-const shop = new Shop();
-shop.render()
+  static init() {
+    const shop = new Shop();
+    shop.render();
+    this.cart = shop.cart;
+  }
+
+  static addProductToCart(product) {
+    this.cart.addProduct(product);
+  }
+}
+
+App.init();
