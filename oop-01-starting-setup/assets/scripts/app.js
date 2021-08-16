@@ -116,6 +116,9 @@ class Shop {
     console.log('prodList -', prodListEl); // console log
   }
 }
+
+// STATIC CLASSES - used to share functionality or data across interfaces or classes.
+// MUST USE KEYWORD 'STATIC' AND ONLY REFERS TO CLASS - LIKE A PRIVATE PROPERTY.
 class App {
   static cart;
 
@@ -131,3 +134,13 @@ class App {
 }
 
 App.init();
+
+
+// */*/*/ NOTES *\*\*\*
+
+// When to use classes:
+//   1. Does not replace Object Literals.
+//     a. Great for genenal data grouping, objects you only create once.
+//     b.Quick and easy to create.
+//   2. Classes are great for recreating the same type of object over an over again.
+//     a. More overhead initially but, easy object duplication threafter.
