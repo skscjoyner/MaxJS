@@ -20,9 +20,9 @@ class ShoppingCart {
   set cartItems(value) {
     this.items = value;
     this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>` 
-    // toFixed(2) limits output to decimal points
+    // toFixed(2) limits output to 2 decimal points
   }
-
+  // Reduction logic
   get totalAmount() {
     const sum = this.items.reduce((prevValue, currItem) => 
       prevValue + currItem.price, 
@@ -34,7 +34,7 @@ class ShoppingCart {
   addProduct(product) {
     const updatedItems = [...this.items];
     updatedItems.push(product);
-    this.cartItems = updatedItems;
+    this.cartItems = updatedItems; // refers to the SETTER.
   }
 
   render() {
@@ -73,7 +73,7 @@ class ProductItem {
         </div>
       </div>
       `;
-    const addCardButton = prodEl.querySelector('button'); // logic to add the item bt clicking the button.
+    const addCardButton = prodEl.querySelector('button'); // logic to add the item by clicking the button.
     addCardButton.addEventListener('click', this.addToCart.bind(this)); // must bind 'this' to the eventListener
     return prodEl;
   }
@@ -107,10 +107,10 @@ class ProductList {
   render() {
     const prodList = document.createElement('ul'); // Create a list of products
     prodList.className = 'product-list'; // for styling from CSS
-    for (const prod of this.products) { // to render each product
+    for (const prod of this.products) { // to render each product in the list.
       const productItem = new ProductItem(prod);
-      const prodEl = productItem.render();
-      prodList.append(prodEl);
+      const prodEl = productItem.render(); // creating the prodEl from the ProductItem class.
+      prodList.append(prodEl); // connecting the ProductItem Class to the ProductList class.
       console.log('prodEl - ', prodEl); // console log
     }
     return prodList;
@@ -157,5 +157,5 @@ App.init();
 //   1. Does not replace Object Literals.
 //     a. Great for genenal data grouping, objects you only create once.
 //     b.Quick and easy to create.
-//   2. Classes are great for recreating the same type of object over an over again.
+//   2. Classes are great for recreating the same type of object over and over again.
 //     a. More overhead initially but, easy object duplication threafter.
