@@ -14,7 +14,36 @@ class Product {
   }
 }
 
-class ShoppingCart {
+class ElementAttribute {
+  constructor(attrName, attrValue) {
+    this.name = attrName;
+    this.value = attrValue;
+  }
+}
+
+// BASE CLASS FOR OUTPUTTING PARTS OF THE WEBPAGE - CLASSES!!
+class Component {
+  constructor(renderHookId) {
+    this.hookId = renderHookId;
+  }
+
+  createRootElement(tag, cssClasses, attributes) {
+    const rootElement = document.createElement(tag);
+    if (cssClasses) {
+      rootElement.className = cssClasses;
+    }
+    if (attributes && attributes.length > 0) {
+      for (const attr of attributes) {
+        rootElement.setAttribute(attr.name, attr.value);
+      }
+    }
+    document.getElementById(this.hookId).append(rootElement);
+    return rootElement;
+  }
+}
+
+// INHERITANCE from another class. Need to use KEYWORD 'EXTENDS'. CAN ONLY INHERIT FROM ONE CLASS.
+class ShoppingCart extends Component {
   items = [];
 
   set cartItems(value) {
@@ -31,6 +60,10 @@ class ShoppingCart {
     return sum;
   }
 
+  constructor(renderHookId) {
+    super(renderHookId);
+  }
+
   addProduct(product) {
     const updatedItems = [...this.items];
     updatedItems.push(product);
@@ -38,14 +71,12 @@ class ShoppingCart {
   }
 
   render() {
-    const cartEl = document.createElement('section'); // adding the placeholder for the cart.
+    const cartEl = this.createRootElement('section', 'cart'); // adding the placeholder for the cart.
     cartEl.innerHTML = `
     <h2>Total: \$${0}</h2>
     <button>Order Now!</button>
-    `;
-    cartEl.className = 'cart'; // adding the class for styling.
+    `;    
     this.totalOutput = cartEl.querySelector('h2')
-    return cartEl;
   }
 }
 
@@ -121,12 +152,11 @@ class Shop {
   render() {
     const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
     
-    this.cart = new ShoppingCart(); // adding the shopping cart to the page and updating the cart.
-    const cartEl = this.cart.render();
+    this.cart = new ShoppingCart('app'); // adding the shopping cart to the page and updating the cart.
+    this.cart.render();
     const productList = new ProductList(); // instantiate the class by doing this.
     const prodListEl = productList.render(); // renders the product list
 
-    renderHook.append(cartEl)
     renderHook.append(prodListEl);
     console.log('prodList -', prodListEl); // console log
   }
