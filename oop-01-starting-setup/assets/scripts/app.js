@@ -81,8 +81,9 @@ class ShoppingCart extends Component {
 }
 
 // THIS CLASS CONTAINS THE LOGIC TO CREATE AND RENDER EACH ITEM
-class ProductItem {
-  constructor(product) {
+class ProductItem extends Component {
+  constructor(product, renderHookId) {
+    super(renderHookId);
     this.product = product;
   }
 
@@ -91,8 +92,9 @@ class ProductItem {
   }
 
   render() { // responsible for rendering a single item
-    const prodEl = document.createElement('li'); // Create an 'li' element 
-    prodEl.className = "product-item"; // for styling from CSS
+    const prodEl = this.createRootElement('li', 'product-item');
+    // const prodEl = document.createElement('li'); // Create an 'li' element 
+    // prodEl.className = "product-item"; // for styling from CSS
     prodEl.innerHTML = `
       <div>
         <img src="${this.product.imageUrl}" alt="${this.product.title}" >
@@ -106,12 +108,11 @@ class ProductItem {
       `;
     const addCardButton = prodEl.querySelector('button'); // logic to add the item by clicking the button.
     addCardButton.addEventListener('click', this.addToCart.bind(this)); // must bind 'this' to the eventListener
-    return prodEl;
   }
 }
 
 // THIS CLASS IS THE LIST OF PRODUCTS
-class ProductList {
+class ProductList extends Component {
   products = [
     new Product(
       'A Pillow',
@@ -133,32 +134,33 @@ class ProductList {
     )
   ];
 
-  constructor() {}
+  constructor(renderHookId) {
+    super(renderHookId);
+  }
 
   render() {
-    const prodList = document.createElement('ul'); // Create a list of products
-    prodList.className = 'product-list'; // for styling from CSS
+    this.createRootElement('ul', 'product-list', [new ElementAttribute('id', 'prod-list')] ); // Create a list of products
+    // prodList.id = 'prod-list';
+    // prodList.className = 'product-list'; // for styling from CSS
     for (const prod of this.products) { // to render each product in the list.
-      const productItem = new ProductItem(prod);
-      const prodEl = productItem.render(); // creating the prodEl from the ProductItem class.
-      prodList.append(prodEl); // connecting the ProductItem Class to the ProductList class.
-      console.log('prodEl - ', prodEl); // console log
+      const productItem = new ProductItem(prod, 'prod-list');
+      productItem.render(); // creating the prodEl from the ProductItem class.
     }
-    return prodList;
+    
   }
 }
 
 class Shop {
   render() {
-    const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
+    // const renderHook = document.getElementById('app'); // Reference to place where element will be displayed on page.
     
     this.cart = new ShoppingCart('app'); // adding the shopping cart to the page and updating the cart.
     this.cart.render();
-    const productList = new ProductList(); // instantiate the class by doing this.
-    const prodListEl = productList.render(); // renders the product list
+    const productList = new ProductList('app'); // instantiate the class by doing this.
+    productList.render(); // renders the product list
 
-    renderHook.append(prodListEl);
-    console.log('prodList -', prodListEl); // console log
+    // renderHook.append(prodListEl);
+    // console.log('prodList -', prodListEl); // console log
   }
 }
 
